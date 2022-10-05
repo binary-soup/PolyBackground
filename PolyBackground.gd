@@ -4,6 +4,11 @@ export var rseed := 0
 export var num_dots := 50
 
 
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_ESCAPE:
+		get_tree().quit()
+
+
 func _ready():
 	var r := RandomNumberGenerator.new()
 	r.seed = rseed
