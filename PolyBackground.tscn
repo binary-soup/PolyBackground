@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PolyBackground.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 300 )
+
+[node name="PolyBackground" type="Node2D"]
+script = ExtResource( 1 )
+rseed = 1
+num_dots = 80
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="PlayArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayArea"]
+position = Vector2( -0.5, 0.5 )
+shape = SubResource( 1 )
+
+[connection signal="area_exited" from="PlayArea" to="." method="_on_PlayArea_area_exited"]
